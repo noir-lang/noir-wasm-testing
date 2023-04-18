@@ -2,23 +2,15 @@ import { html, LitElement } from "lit";
 import { compileNoirSource } from "./compile_prove_verify";
 
 export class MyElement extends LitElement {
-  static get properties() {
-    return {
-      title: { type: String },
-    };
-  }
-
-  constructor() {
-    super();
-    this.title = "Hey there";
-  }
-
   async __proveButtonClicked() {
     try {
-      const compiledSource = await compileNoirSource();
-      console.log({ compiledSource });
-    } finally {
-      console.log("====================================================");
+      const main_nr_SourceURL = new URL('../circuits/main.nr', import.meta.url);
+      const response = await fetch(main_nr_SourceURL);
+      const sourceData = await response.text();
+      const compiledSource = await compileNoirSource(sourceData);
+      console.log({ compiledSource })
+    } catch (e) {
+      console.error(e)
     }
   }
 
