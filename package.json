@@ -1,0 +1,28 @@
+{
+  "name": "noir-wasm-testing",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "rm -rf ./lib && tsc && web-test-runner lib/**/*.test.js --node-resolve"
+  },
+  "repository": "git+https://github.com/AztecProtocol/noir-wasm-testing.git",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AztecProtocol/noir-wasm-testing/issues"
+  },
+  "homepage": "https://github.com/AztecProtocol/noir-wasm-testing#readme",
+  "dependencies": {
+    "@noir-lang/aztec_backend": "^0.12.0",
+    "@noir-lang/barretenberg": "^2.19.0",
+    "@noir-lang/noir-source-resolver": "^1.1.1",
+    "@noir-lang/noir_wasm": "^0.3.2-fa0e9cff",
+    "@web/dev-server-esbuild": "^0.3.6",
+    "@web/test-runner": "^0.15.3",
+    "lit": "^2.7.2",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@open-wc/testing": "^3.1.8"
+  }
+}
