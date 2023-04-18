@@ -29,5 +29,4 @@ export async function compileNoirSource(noir_source: string) {
   } catch (e) {
     console.log("Error while compiling:", e);
   }
-  // });
 }
