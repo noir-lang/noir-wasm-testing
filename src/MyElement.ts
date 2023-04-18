@@ -22,15 +22,19 @@ export class MyElement extends LitElement {
   }
 
   async handleProveButton() {
-    this.promise = new Promise(async (resolve) => {
-      const source = await this.getSource();
-      const compiledSource = await compileNoirSource(source);
-      const precompiledSource = await this.getPrecompiledSource();
+    this.promise = new Promise(async (resolve, reject) => {
+      try {
+        const source = await this.getSource();
+        const compiledSource = await compileNoirSource(source);
+        const precompiledSource = await this.getPrecompiledSource();
 
-      const compiled = JSON.stringify(compiledSource.circuit);
-      const precompiled = JSON.stringify(precompiledSource.circuit);
+        const compiled = JSON.stringify(compiledSource.circuit);
+        const precompiled = JSON.stringify(precompiledSource.circuit);
 
-      resolve(compiled === precompiled);
+        resolve(compiled === precompiled);
+      } catch (e) {
+        reject(e)
+      }
     });
   }
 
