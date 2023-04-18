@@ -22,7 +22,6 @@ export async function compileNoirSource(noir_source: string) {
     const compiled_noir = compile({});
 
     const buildInfo = await build_info();
-    console.log({ buildInfo });
     console.log("Noir source compilation done.");
 
     return compiled_noir;

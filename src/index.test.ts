@@ -1,11 +1,15 @@
-import { html, fixture } from "@open-wc/testing";
-
+import { html, fixture, expect } from "@open-wc/testing";
 import "../my-element.js";
 
-describe("my-test", () => {
-  it("works?", async () => {
-    const el: any = await fixture(html` <my-element></my-element> `);
-    el.shadowRoot.querySelector("button").click();
-    await new Promise((r) => setTimeout(r, 30000));
+describe("noir wasm compilation", () => {
+  let element: any;
+
+  before(async () => {
+    element = await fixture(html`<my-element />`);
+    element.shadowRoot.querySelector("button").click();
+  })
+
+  it("matches nargos compilation", async () => {
+    expect(await element.promise).to.equal(true);
   });
 });

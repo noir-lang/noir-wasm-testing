@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es2020",
     "moduleResolution": "node",
     "outDir": "lib",
+    "target": "ESNext",
     "module": "ESNext",
     "strict": true,
+    "experimentalDecorators": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "removeComments": false,
     "preserveConstEnums": true,
     "sourceMap": true,
+    "resolveJsonModule": true,
     "importHelpers": true
   },
   "include": ["src"]
