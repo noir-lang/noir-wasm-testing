@@ -15,7 +15,7 @@ jobs:
 
       - name: Compile using nargo
         run: npx nargo compile nargo-compiler
-        path: ./src/nargo-compiler
+        working-directory: ./src/nargo-compiler
 
       - name: Run tests
         run: npm test
