@@ -15,7 +15,7 @@
   "dependencies": {
     "@noir-lang/aztec_backend": "^0.12.0",
     "@noir-lang/barretenberg": "^2.19.0",
-    "@noir-lang/noir-source-resolver": "^1.1.1",
+    "@noir-lang/noir-source-resolver": "^1.1.2",
     "@noir-lang/noir_wasm": "^0.3.2-fa0e9cff",
     "@web/dev-server-esbuild": "^0.3.6",
     "@web/test-runner": "^0.15.3",

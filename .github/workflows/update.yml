@@ -13,9 +13,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Compile using nargo
-        run: npx nargo compile nargo-compiler
-        working-directory: ./src/nargo-compiler
-
       - name: Run tests
         run: npm test
