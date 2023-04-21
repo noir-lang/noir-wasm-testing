@@ -13,11 +13,11 @@ export class MyElement extends LitElement {
   }
 
   async getSource() {
-    return await this.getFileContent('./nargo-compiler/src/main.nr')
+    return await this.getFileContent('./noir-script/src/main.nr')
   }
 
   async getPrecompiledSource() {
-    const compiledData = await this.getFileContent('./nargo-compiler/target/nargo-compiler.json');
+    const compiledData = await this.getFileContent('./noir-script/target/noir-script.json');
     return JSON.parse(compiledData);
   }
 
