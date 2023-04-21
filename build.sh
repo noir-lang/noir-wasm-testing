@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOME=$(pwd)
+# HOME=$(pwd)
 NARGO_VERSION="v0.3.2"
 
 # Download and install nargo
