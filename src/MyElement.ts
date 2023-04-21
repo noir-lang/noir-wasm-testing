@@ -28,14 +28,14 @@ export class MyElement extends LitElement {
         const compiledSource = await compileNoirSource(source);
         const precompiledSource = await this.getPrecompiledSource();
 
-        const compiled = JSON.stringify(compiledSource.circuit);
-        const precompiled = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
+        const noirWasmOutput = JSON.stringify(compiledSource.circuit);
+        const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
-        console.log({ compiled, precompiled })
+        console.log({ noirWasmOutput, nargoOutput })
 
-        console.log("Compilation is a match? ", compiled === precompiled)
+        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput)
 
-        resolve(compiled === precompiled);
+        resolve(noirWasmOutput === nargoOutput);
       } catch (e) {
         reject(e)
       }
