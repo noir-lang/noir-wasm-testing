@@ -240,10 +240,10 @@
   resolved "https://registry.yarnpkg.com/@noir-lang/noir-source-resolver/-/noir-source-resolver-1.1.2.tgz#724f58e095722762e3880ca9e08edc35742e8f05"
   integrity sha512-GRiAR7z2RxdUt07fL3X303sm3Qs4Ec9lPDCQ5uwK7xDD2nK6KaNBNQyl+JrotCxsMhoh7MVh38SZSOOCxaJgUQ==
 
-"@noir-lang/noir_wasm@^0.3.2-3d2233d":
-  version "0.3.2-fd3c99a"
-  resolved "https://registry.yarnpkg.com/@noir-lang/noir_wasm/-/noir_wasm-0.3.2-fd3c99a.tgz#c5a2f6e8c98163846b62ccdcb2d6286af79c2797"
-  integrity sha512-L0yx3BF1FwTX8FJLNOZM7GA5eQjr1eL6abQhj72x8xyvdp98fWl4m3/fV9C7zS+yuyM405W3wNG3UAEFp84OKA==
+"@noir-lang/noir_wasm@^0.4.1-3d2233d":
+  version "0.4.1-3d2233d"
+  resolved "https://registry.yarnpkg.com/@noir-lang/noir_wasm/-/noir_wasm-0.4.1-3d2233d.tgz#48d3830ce7309f91faa5d037be807d2d0cbcfffe"
+  integrity sha512-WJgmxRve3gVwa4Wl2c3aEboRI7oSKMnRZ4mGL3ktp0c2wXli6yhYLpK7NooupllYFfikILHlgEUa+K38V8eBeA==
 
 "@open-wc/chai-dom-equals@^0.12.36":
   version "0.12.36"
