@@ -235,15 +235,15 @@
     threads "1.7.0"
     tslib "^2.0.0"
 
-"@noir-lang/noir-source-resolver@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@noir-lang/noir-source-resolver/-/noir-source-resolver-1.1.1.tgz#580be8297ec13334373c53bdef05b58bb5971737"
-  integrity sha512-b/k3QVRMvhFKSPo4FB/iTkWi3DARLLvzn7fDfbHMsrPsUL+FkrFybrhTw5kaSHQ/MC+BSfWY3aWSh3udIz9fkA==
+"@noir-lang/noir-source-resolver@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@noir-lang/noir-source-resolver/-/noir-source-resolver-1.1.2.tgz#724f58e095722762e3880ca9e08edc35742e8f05"
+  integrity sha512-GRiAR7z2RxdUt07fL3X303sm3Qs4Ec9lPDCQ5uwK7xDD2nK6KaNBNQyl+JrotCxsMhoh7MVh38SZSOOCxaJgUQ==
 
-"@noir-lang/noir_wasm@^0.3.2-fa0e9cff":
-  version "0.3.2-fa0e9cff"
-  resolved "https://registry.yarnpkg.com/@noir-lang/noir_wasm/-/noir_wasm-0.3.2-fa0e9cff.tgz#098a56396bcd4790eee11090e012278370ee49f7"
-  integrity sha512-xhLU7zOPcSoL1DNDr9phvWdpLGob1JU3GcukzGVq9mcC/rI+q2hCmu/28SuZnte5l8z5a3sn7qP/eHNNaJSiNg==
+"@noir-lang/noir_wasm@^0.3.2-3d2233d":
+  version "0.3.2-fd3c99a"
+  resolved "https://registry.yarnpkg.com/@noir-lang/noir_wasm/-/noir_wasm-0.3.2-fd3c99a.tgz#c5a2f6e8c98163846b62ccdcb2d6286af79c2797"
+  integrity sha512-L0yx3BF1FwTX8FJLNOZM7GA5eQjr1eL6abQhj72x8xyvdp98fWl4m3/fV9C7zS+yuyM405W3wNG3UAEFp84OKA==
 
 "@open-wc/chai-dom-equals@^0.12.36":
   version "0.12.36"
