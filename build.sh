@@ -5,7 +5,7 @@ NARGO_VERSION="v0.3.2"
 
 # echo "Installing at $HOME"
 
-git clone git@github.com:noir-lang/noir.git
+git clone https://github.com/noir-lang/noir.git
 cd noir && git checkout tags/$NARGO_VERSION
 sudo apt update && sudo apt install clang lld cmake libomp-dev
 nargo --version
