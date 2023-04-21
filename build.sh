@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# HOME=$(pwd)
+HOME=$(pwd)
 NARGO_VERSION="v0.3.2"
 
-echo $HOME
+echo "Installing at $HOME"
 
 # Download and install nargo
 mkdir -p $HOME/.nargo/bin && \
