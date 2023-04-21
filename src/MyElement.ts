@@ -29,7 +29,7 @@ export class MyElement extends LitElement {
         const precompiledSource = await this.getPrecompiledSource();
 
         const compiled = JSON.stringify(compiledSource.circuit);
-        const precompiled = JSON.stringify(precompiledSource.circuit);
+        const precompiled = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
         console.log({ compiled, precompiled })
 
