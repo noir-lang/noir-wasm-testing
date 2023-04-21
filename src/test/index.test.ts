@@ -1,5 +1,5 @@
 import { html, fixture, expect } from "@open-wc/testing";
-import "../my-element.js";
+import "../../my-element.js";
 
 describe("noir wasm compilation", () => {
   let element: any;
