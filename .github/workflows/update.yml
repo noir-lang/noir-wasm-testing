@@ -10,6 +10,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Run build script
+        run: |
+          chmod +x build.sh
+          ./build.sh
+
       - name: Install dependencies
         run: npm install
 
