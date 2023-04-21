@@ -6,4 +6,4 @@ tar -xvf $HOME/.nargo/bin/nargo-x86_64-unknown-linux-gnu.tar.gz -C $HOME/.nargo/
 echo -e '\nexport PATH=$PATH:$HOME/.nargo/bin' >> ~/.bashrc && \
 source ~/.bashrc
 
-nargo --help
+# nargo --help
