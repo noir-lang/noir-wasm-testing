@@ -31,6 +31,8 @@ export class MyElement extends LitElement {
         const compiled = JSON.stringify(compiledSource.circuit);
         const precompiled = JSON.stringify(precompiledSource.circuit);
 
+        console.log("Compilation is a match? ", compiled === precompiled)
+
         resolve(compiled === precompiled);
       } catch (e) {
         reject(e)
