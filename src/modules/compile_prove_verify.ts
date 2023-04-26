@@ -1,8 +1,12 @@
 import { initialiseResolver } from "@noir-lang/noir-source-resolver";
 import initNoirWasm, { build_info, compile } from "@noir-lang/noir_wasm";
+import { logElapsedTime } from "./helpers";
 
 export async function compileNoirSource(noir_source: string) {
   await initNoirWasm();
+
+  const timerLabel = "compileNoirSource";
+  const startTime = performance.now();
 
   console.log("Compiling Noir source...");
 
@@ -27,5 +31,7 @@ export async function compileNoirSource(noir_source: string) {
     return compiled_noir;
   } catch (e) {
     console.log("Error while compiling:", e);
+  } finally {
+    logElapsedTime(timerLabel, startTime);
   }
 }

@@ -1,6 +1,7 @@
 import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
+import { logElapsedTime } from "./helpers";
 
 export class MyElement extends LitElement {
   @property({ type: Promise })
@@ -23,6 +24,9 @@ export class MyElement extends LitElement {
 
   async handleProveButton() {
     this.promise = new Promise(async (resolve, reject) => {
+      const timerLabel = "handleProveButton";
+      const startTime = performance.now();
+
       try {
         const source = await this.getSource();
         const compiledSource = await compileNoirSource(source);
@@ -31,16 +35,19 @@ export class MyElement extends LitElement {
         const noirWasmOutput = JSON.stringify(compiledSource.circuit);
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
-        console.log({ noirWasmOutput, nargoOutput })
+        console.log({ noirWasmOutput, nargoOutput });
 
-        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput)
+        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput);
 
         resolve(noirWasmOutput === nargoOutput);
       } catch (e) {
-        reject(e)
+        reject(e);
+      } finally {
+        logElapsedTime(timerLabel, startTime);
       }
     });
   }
+
 
   render() {
     return html`<button @click=${this.handleProveButton} />`;
