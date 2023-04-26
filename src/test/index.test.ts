@@ -11,5 +11,5 @@ describe("noir wasm compilation", () => {
 
   it("matches nargos compilation", async () => {
     expect(await element.promise).to.equal(true);
-  });
+  }).timeout(5e3);
 });

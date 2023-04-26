@@ -23,6 +23,8 @@ export class MyElement extends LitElement {
 
   async handleProveButton() {
     this.promise = new Promise(async (resolve, reject) => {
+      console.time("handleProveButton")
+
       try {
         const source = await this.getSource();
         const compiledSource = await compileNoirSource(source);
@@ -38,6 +40,8 @@ export class MyElement extends LitElement {
         resolve(noirWasmOutput === nargoOutput);
       } catch (e) {
         reject(e)
+      } finally {
+        console.timeEnd("handleProveButton")
       }
     });
   }
