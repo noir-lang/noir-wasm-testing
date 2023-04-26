@@ -23,9 +23,9 @@ export class MyElement extends LitElement {
 
   async handleProveButton() {
     this.promise = new Promise(async (resolve, reject) => {
-      console.time("handleProveButton")
-
       try {
+        console.time("handleProveButton");
+
         const source = await this.getSource();
         const compiledSource = await compileNoirSource(source);
         const precompiledSource = await this.getPrecompiledSource();
@@ -33,15 +33,13 @@ export class MyElement extends LitElement {
         const noirWasmOutput = JSON.stringify(compiledSource.circuit);
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
-        console.log({ noirWasmOutput, nargoOutput })
-
-        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput)
+        console.log({ noirWasmOutput, nargoOutput });
+        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput);
+        console.timeEnd("handleProveButton");
 
         resolve(noirWasmOutput === nargoOutput);
       } catch (e) {
         reject(e)
-      } finally {
-        console.timeEnd("handleProveButton")
       }
     });
   }

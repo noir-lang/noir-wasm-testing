@@ -4,6 +4,7 @@ import initNoirWasm, { build_info, compile } from "@noir-lang/noir_wasm";
 export async function compileNoirSource(noir_source: string) {
   await initNoirWasm();
 
+  console.time("compileNoirSource");
   console.log("Compiling Noir source...");
 
   initialiseResolver((id: string) => {
@@ -22,7 +23,8 @@ export async function compileNoirSource(noir_source: string) {
     const compiled_noir = compile({});
 
     const buildInfo = await build_info();
-    console.log("Noir source compilation done. -- TEST");
+    console.log("1 - Noir source compilation done.");
+    console.timeEnd("compileNoirSource");
 
     return compiled_noir;
   } catch (e) {
