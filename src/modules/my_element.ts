@@ -1,7 +1,7 @@
 import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
-const core = require("@actions/core");
+import * as core from "@actions/core";
 
 export class MyElement extends LitElement {
   @property({ type: Promise })
