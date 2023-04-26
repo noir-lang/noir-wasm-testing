@@ -2,11 +2,11 @@ import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
 
-function logElapsedTime(label: string, startTime: [number, number]) {
-  const elapsedTime = process.hrtime(startTime);
-  const elapsedTimeMs = elapsedTime[0] * 1e3 + elapsedTime[1] / 1e6;
+function logElapsedTime(label: string, startTime: number) {
+  const elapsedTimeMs = performance.now() - startTime;
   console.log(`${label}: ${elapsedTimeMs.toFixed(3)}ms`);
 }
+
 
 export class MyElement extends LitElement {
   @property({ type: Promise })
@@ -30,7 +30,7 @@ export class MyElement extends LitElement {
   async handleProveButton() {
     this.promise = new Promise(async (resolve, reject) => {
       const timerLabel = "handleProveButton";
-      const startTime = process.hrtime();
+      const startTime = performance.now();
 
       try {
         const source = await this.getSource();
