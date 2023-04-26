@@ -1,7 +1,12 @@
 import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
-import * as core from "@actions/core";
+
+function logElapsedTime(label: string, startTime: [number, number]) {
+  const elapsedTime = process.hrtime(startTime);
+  const elapsedTimeMs = elapsedTime[0] * 1e3 + elapsedTime[1] / 1e6;
+  console.log(`${label}: ${elapsedTimeMs.toFixed(3)}ms`);
+}
 
 export class MyElement extends LitElement {
   @property({ type: Promise })
@@ -24,10 +29,10 @@ export class MyElement extends LitElement {
 
   async handleProveButton() {
     this.promise = new Promise(async (resolve, reject) => {
-      try {
-        const timerLabel = "handleProveButton";
-        const startTime = process.hrtime();
+      const timerLabel = "handleProveButton";
+      const startTime = process.hrtime();
 
+      try {
         const source = await this.getSource();
         const compiledSource = await compileNoirSource(source);
         const precompiledSource = await this.getPrecompiledSource();
@@ -36,18 +41,18 @@ export class MyElement extends LitElement {
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
         console.log({ noirWasmOutput, nargoOutput });
-        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput);
 
-        const elapsedTime = process.hrtime(startTime);
-        const elapsedTimeMs = elapsedTime[0] * 1e3 + elapsedTime[1] / 1e6;
-        core.info(`${timerLabel}: ${elapsedTimeMs.toFixed(3)}ms`);
+        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput);
 
         resolve(noirWasmOutput === nargoOutput);
       } catch (e) {
-        reject(e)
+        reject(e);
+      } finally {
+        logElapsedTime(timerLabel, startTime);
       }
     });
   }
+
 
   render() {
     return html`<button @click=${this.handleProveButton} />`;
