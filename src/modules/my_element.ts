@@ -1,12 +1,7 @@
 import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
-
-function logElapsedTime(label: string, startTime: number) {
-  const elapsedTimeMs = performance.now() - startTime;
-  console.log(`${label}: ${elapsedTimeMs.toFixed(3)}ms`);
-}
-
+import { logElapsedTime } from "./helpers";
 
 export class MyElement extends LitElement {
   @property({ type: Promise })
