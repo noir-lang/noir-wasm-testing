@@ -1,6 +1,7 @@
 import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
+import core from "@actions/core"
 
 export class MyElement extends LitElement {
   @property({ type: Promise })
@@ -24,7 +25,8 @@ export class MyElement extends LitElement {
   async handleProveButton() {
     this.promise = new Promise(async (resolve, reject) => {
       try {
-        console.time("handleProveButton");
+        const timerLabel = "handleProveButton";
+        const startTime = process.hrtime();
 
         const source = await this.getSource();
         const compiledSource = await compileNoirSource(source);
@@ -35,7 +37,10 @@ export class MyElement extends LitElement {
 
         console.log({ noirWasmOutput, nargoOutput });
         console.log("Compilation is a match? ", noirWasmOutput === nargoOutput);
-        console.timeEnd("handleProveButton");
+
+        const elapsedTime = process.hrtime(startTime);
+        const elapsedTimeMs = elapsedTime[0] * 1e3 + elapsedTime[1] / 1e6;
+        core.info(`${timerLabel}: ${elapsedTimeMs.toFixed(3)}ms`);
 
         resolve(noirWasmOutput === nargoOutput);
       } catch (e) {

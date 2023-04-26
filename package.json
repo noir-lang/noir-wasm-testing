@@ -13,10 +13,11 @@
   },
   "homepage": "https://github.com/AztecProtocol/noir-wasm-testing#readme",
   "dependencies": {
+    "@actions/core": "^1.10.0",
     "@noir-lang/aztec_backend": "^0.12.0",
     "@noir-lang/barretenberg": "^2.19.0",
-    "@noir-lang/noir-source-resolver": "^1.1.2",
     "@noir-lang/noir_wasm": "^0.4.1-3d2233d",
+    "@noir-lang/noir-source-resolver": "^1.1.2",
     "@web/dev-server-esbuild": "^0.3.6",
     "@web/test-runner": "^0.15.3",
     "lit": "^2.7.2",
