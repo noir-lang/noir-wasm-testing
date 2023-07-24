@@ -35,7 +35,6 @@ export class MyElement extends LitElement {
         const noirWasmOutput = JSON.stringify(compiledSource.circuit);
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
-        console.log(JSON.stringify(precompiledSource))
         console.log({ noirWasmOutput, nargoOutput });
 
         console.log("Compilation is a match? ", noirWasmOutput === nargoOutput);
