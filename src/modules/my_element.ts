@@ -33,7 +33,7 @@ export class MyElement extends LitElement {
         const precompiledSource = await this.getPrecompiledSource();
 
         const noirWasmOutput = JSON.stringify(compiledSource.circuit);
-        const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
+        const nargoOutput = JSON.stringify(precompiledSource.circuit);
 
         console.log({ noirWasmOutput, nargoOutput });
 
