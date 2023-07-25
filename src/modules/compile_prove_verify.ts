@@ -25,10 +25,9 @@ export async function compileNoirSource(noir_source: string) {
   try {
     const compiled_noir = compile({});
 
-    const buildInfo = await build_info();
-    console.log("Noir source compilation done.");
+    const response = await fetch('data:application/octet-stream;base64,' + compiled_noir)
 
-    return compiled_noir;
+    return await response.arrayBuffer();
   } catch (e) {
     console.log("Error while compiling:", e);
   } finally {
