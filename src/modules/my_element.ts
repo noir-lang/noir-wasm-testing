@@ -32,7 +32,10 @@ export class MyElement extends LitElement {
         const compiledSource = await compileNoirSource(source);
         const precompiledSource = await this.getPrecompiledSource();
 
-        const noirWasmOutput = JSON.stringify(compiledSource.circuit);
+        const fetchResponse = await fetch('data:application/octet-stream;base64,' + compiledSource.circuit)
+        const buffer = await fetchResponse.arrayBuffer();
+
+        const noirWasmOutput = JSON.stringify(buffer);
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
         console.log({ noirWasmOutput, nargoOutput });
