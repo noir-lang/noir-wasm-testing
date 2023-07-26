@@ -45,10 +45,12 @@ export class MyElement extends LitElement {
         console.log({ compiledSource })
 
         const buffer = this.base64ToArrayBuffer(compiledSource.circuit);
+        const uint8Array = new Uint8Array(buffer);
 
+        console.log({ uint8Array });
         console.log({ buffer })
 
-        const noirWasmOutput = JSON.stringify(buffer);
+        const noirWasmOutput = JSON.stringify(uint8Array);
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
         console.log({ noirWasmOutput, nargoOutput });
