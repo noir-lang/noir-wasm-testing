@@ -22,6 +22,16 @@ export class MyElement extends LitElement {
     return JSON.parse(compiledData);
   }
 
+  base64ToArrayBuffer(base64: string) {
+    const binaryString = window.atob(base64);
+    const len = binaryString.length;
+    let bytes = new Uint8Array(len);
+    for (let i = 0; i < len; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes.buffer;
+  }
+
   async handleProveButton() {
     this.promise = new Promise(async (resolve, reject) => {
       const timerLabel = "handleProveButton";
@@ -32,8 +42,11 @@ export class MyElement extends LitElement {
         const compiledSource = await compileNoirSource(source);
         const precompiledSource = await this.getPrecompiledSource();
 
-        const fetchResponse = await fetch('data:application/octet-stream;base64,' + compiledSource.circuit)
-        const buffer = await fetchResponse.arrayBuffer();
+        console.log({ compiledSource })
+
+        const buffer = this.base64ToArrayBuffer(compiledSource.circuit);
+
+        console.log({ buffer })
 
         const noirWasmOutput = JSON.stringify(buffer);
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
