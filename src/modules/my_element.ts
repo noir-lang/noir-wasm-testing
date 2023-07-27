@@ -1,3 +1,4 @@
+import { decompressSync } from 'fflate';
 import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
@@ -42,15 +43,13 @@ export class MyElement extends LitElement {
         const compiledSource = await compileNoirSource(source);
         const precompiledSource = await this.getPrecompiledSource();
 
-        console.log({ compiledSource })
-
         const buffer = this.base64ToArrayBuffer(compiledSource.circuit);
-        const uint8Array = new Uint8Array(buffer);
+        const acirBuffer = new Uint8Array(buffer);
+        const acirBufferUncompressed = decompressSync(acirBuffer);
 
-        console.log({ uint8Array: Array.from(uint8Array) });
-        console.log({ buffer })
+        console.log({ acirBufferUncompressed })
 
-        const noirWasmOutput = JSON.stringify(Array.from(uint8Array));
+        const noirWasmOutput = JSON.stringify(acirBufferUncompressed);
         const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
 
         console.log({ noirWasmOutput, nargoOutput });
