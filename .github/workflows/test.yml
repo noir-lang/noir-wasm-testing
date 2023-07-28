@@ -23,5 +23,8 @@ jobs:
           npx playwright install
           npx playwright install-deps
 
-      - name: Run tests
+      - name: Run browser tests
         run: npm run test:browser
+
+      - name: Run node.js tests
+        run: npm run test

@@ -1,7 +1,10 @@
 import { expect } from "@esm-bundle/chai";
-import { initialiseResolver } from "@noir-lang/noir-source-resolver";
-import initNoirWasm, { build_info, compile } from "@noir-lang/noir_wasm";
+import initNoirWasm from "@noir-lang/noir_wasm";
+import { compileNoirSource, nargoArtifactPath, noirSourcePath } from "../shared";
 
+beforeEach(async () => {
+  await initNoirWasm();
+});
 
 async function getFileContent(path: string): Promise<string> {
   const mainnrSourceURL = new URL(path, import.meta.url);
@@ -10,42 +13,13 @@ async function getFileContent(path: string): Promise<string> {
 }
 
 async function getSource(): Promise<string> {
-  return getFileContent('../noir-script/src/main.nr')
+  return getFileContent(noirSourcePath)
 }
 
 async function getPrecompiledSource(): Promise<string> {
-  const compiledData = await getFileContent('../noir-script/target/noir-script.json');
+  const compiledData = await getFileContent(nargoArtifactPath);
   return JSON.parse(compiledData).bytecode;
 }
-
-export async function compileNoirSource(noir_source: string): Promise<any> {
-  await initNoirWasm();
-
-  console.log("Compiling Noir source...");
-
-  initialiseResolver((id: string) => {
-    console.log(`Resolving source ${id}`);
-
-    const source = noir_source;
-
-    if (typeof source === "undefined") {
-      throw Error(`Could not resolve source for '${id}'`);
-    } else {
-      return source;
-    }
-  });
-
-  try {
-    const compiled_noir = compile({});
-
-    console.log("Noir source compilation done.");
-
-    return compiled_noir.circuit;
-  } catch (e) {
-    console.log("Error while compiling:", e);
-  }
-}
-
 
 describe("noir wasm compilation", () => {
   it("matches nargos compilation", async () => {
