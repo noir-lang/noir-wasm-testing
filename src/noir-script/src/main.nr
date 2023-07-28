@@ -10,5 +10,5 @@
 // @value x = 4
 // @value y = 5
 fn main(x : u64, y : pub u64) {
-  constrain x < y;
+  assert(x < y);
 }
