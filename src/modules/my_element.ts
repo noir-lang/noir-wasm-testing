@@ -19,7 +19,7 @@ export class MyElement extends LitElement {
 
   async getPrecompiledSource() {
     const compiledData = await this.getFileContent('../noir-script/target/noir-script.json');
-    return JSON.parse(compiledData);
+    return JSON.parse(compiledData).bytecode;
   }
 
   base64ToArrayBuffer(base64: string) {
@@ -39,23 +39,17 @@ export class MyElement extends LitElement {
 
       try {
         const source = await this.getSource();
-        const compiledSource = await compileNoirSource(source);
-        const precompiledSource = await this.getPrecompiledSource();
+        const wasmCircuitBase64 = await compileNoirSource(source);
 
-        const buffer = this.base64ToArrayBuffer(compiledSource.circuit);
-        const acirBuffer = new Uint8Array(buffer);
-        const acirBufferUncompressed = decompressSync(acirBuffer);
+        const cliCircuitBase64 = await this.getPrecompiledSource();
 
-        console.log({ acirBufferUncompressed })
+        console.log("wasm", wasmCircuitBase64);
 
-        const noirWasmOutput = JSON.stringify(acirBufferUncompressed);
-        const nargoOutput = JSON.stringify(precompiledSource.bytecode || precompiledSource.circuit);
+        console.log("cli", cliCircuitBase64);
 
-        console.log({ noirWasmOutput, nargoOutput });
+        console.log("Compilation is a match? ", wasmCircuitBase64 === cliCircuitBase64);
 
-        console.log("Compilation is a match? ", noirWasmOutput === nargoOutput);
-
-        resolve(noirWasmOutput === nargoOutput);
+        resolve(wasmCircuitBase64 === cliCircuitBase64);
       } catch (e) {
         reject(e);
       } finally {
