@@ -1,4 +1,3 @@
-import { decompressSync } from 'fflate';
 import { html, LitElement } from "lit";
 import { property } from 'lit/decorators.js';
 import { compileNoirSource } from "./compile_prove_verify";
