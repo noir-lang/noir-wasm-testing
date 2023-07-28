@@ -5,7 +5,6 @@ import { compileNoirSource } from "./compile_prove_verify";
 import { logElapsedTime } from "./helpers";
 
 export class MyElement extends LitElement {
-  @property({ type: Promise })
   promise: Promise<boolean> | undefined = undefined;
 
   async getFileContent(path: string) {
