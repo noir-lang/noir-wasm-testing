@@ -1,13 +1,10 @@
 import { initialiseResolver } from "@noir-lang/noir-source-resolver";
-import initNoirWasm, { build_info, compile } from "@noir-lang/noir_wasm";
-import { logElapsedTime } from "./helpers";
+import { compile } from "@noir-lang/noir_wasm";
 
-export async function compileNoirSource(noir_source: string) {
-  await initNoirWasm();
+export const noirSourcePath = "../../noir-script/src/main.nr";
+export const nargoArtifactPath = "../../noir-script/target/noir-script.json";
 
-  const timerLabel = "compileNoirSource";
-  const startTime = performance.now();
-
+export async function compileNoirSource(noir_source: string): Promise<any> {
   console.log("Compiling Noir source...");
 
   initialiseResolver((id: string) => {
@@ -25,13 +22,10 @@ export async function compileNoirSource(noir_source: string) {
   try {
     const compiled_noir = compile({});
 
-    const buildInfo = await build_info();
     console.log("Noir source compilation done.");
 
-    return compiled_noir;
+    return compiled_noir.circuit;
   } catch (e) {
     console.log("Error while compiling:", e);
-  } finally {
-    logElapsedTime(timerLabel, startTime);
   }
 }

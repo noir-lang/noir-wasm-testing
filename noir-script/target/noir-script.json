@@ -1,0 +1,38 @@
+{
+  "backend": "acvm-backend-barretenberg",
+  "abi": {
+    "parameters": [
+      {
+        "name": "x",
+        "type": {
+          "kind": "integer",
+          "sign": "unsigned",
+          "width": 64
+        },
+        "visibility": "private"
+      },
+      {
+        "name": "y",
+        "type": {
+          "kind": "integer",
+          "sign": "unsigned",
+          "width": 64
+        },
+        "visibility": "public"
+      }
+    ],
+    "param_witnesses": {
+      "x": [
+        1
+      ],
+      "y": [
+        2
+      ]
+    },
+    "return_type": null,
+    "return_witnesses": []
+  },
+  "bytecode": "H4sIAAAAAAAA/9VTWwoDIQz0sbQ9TuJjjX97lUrd+x+hWxpBLCy05qcDEqMwmUzIVSl1U2/o4xiOW5cbzttfg+G4cYQ5oO64PKwh1OQqeryDy4UihFhWQsJI8eHI+0qBUi45QcbgK+4x+53JzO+6cHxQA6R47cGxDJ6KG/oywnKRli9djQb7J8Oc5brI9Qhn/n2pEwadaAV7XgTnOuHf6WLpOf8+eraCc9adxnY3nfYnGUuDJ0UFAAA=",
+  "proving_key": null,
+  "verification_key": null
+}
