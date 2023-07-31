@@ -13,6 +13,5 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "importHelpers": true
-  },
-  "include": ["src"]
+  }
 }

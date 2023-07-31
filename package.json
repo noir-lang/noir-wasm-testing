@@ -4,23 +4,25 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "test": "rm -rf ./lib && tsc && web-test-runner lib/**/*.test.js --node-resolve"
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha",
+    "test:browser": "web-test-runner"
   },
-  "repository": "git+https://github.com/AztecProtocol/noir-wasm-testing.git",
+  "repository": "git+https://github.com/noir-lang/noir-wasm-testing.git",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AztecProtocol/noir-wasm-testing/issues"
+    "url": "https://github.com/noir-lang/noir-wasm-testing/issues"
   },
-  "homepage": "https://github.com/AztecProtocol/noir-wasm-testing#readme",
-  "dependencies": {
+  "homepage": "https://github.com/noir-lang/noir-wasm-testing#readme",
+  "devDependencies": {
+    "@esm-bundle/chai": "^4.3.4-fix.0",
     "@noir-lang/noir_wasm": "github:noir-lang/noir_wasm",
     "@noir-lang/noir-source-resolver": "^1.1.2",
     "@web/dev-server-esbuild": "^0.3.6",
     "@web/test-runner": "^0.15.3",
-    "lit": "^2.7.2",
+    "@web/test-runner-playwright": "^0.10.0",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
-  },
-  "devDependencies": {
-    "@open-wc/testing": "^3.1.8"
   }
 }
