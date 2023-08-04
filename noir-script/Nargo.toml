@@ -1,5 +1,5 @@
 [package]
-name="noir-wasm-testing"
+name="noir_wasm_testing"
 authors = [""]
 compiler_version = "0.1"
 
